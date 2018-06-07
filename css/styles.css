@@ -1,0 +1,14 @@
+
+.container {
+    width: 100%;
+}
+
+.wrapper {
+    margin-left:50px;
+    margin-right:20px;
+}
+
+#btnSearch{
+    width:100%;
+    height:30px;
+}

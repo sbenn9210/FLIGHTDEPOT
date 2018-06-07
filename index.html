@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Creating a Flight Depot WebPage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css"> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+</head>
+<body>
+  <div class="fluid">
+   <form>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+    <div id ="wrapper">
+      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        <button type="button" class="btn btn-danger">Round-trip</button>
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop4" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+          <div class="dropdown-menu" id="dropdownTripType"aria-labelledby="btnGroupDrop4">
+            <a class="dropdown-item" href="#">Round-trip</a>
+            <a class="dropdown-item" href="#">One-way</a>
+            <a class="dropdown-item" href="#">Multi-city</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        <button type="button" class="btn btn-danger">1 Adult</button>
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop4" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+          <div class="dropdown-menu" id="dropdownTravellers"aria-labelledby="btnGroupDrop4">
+            <a class="dropdown-item" href="#">Adults &nbsp18-64</a>
+            <a class="dropdown-item" href="#">Seniors &nbsp65+</a>
+            <a class="dropdown-item" href="#">Youth &nbsp12-17</a>
+            <a class="dropdown-item" href="#">Child &nbsp2-11</a>
+            <a class="dropdown-item" href="#">Seat Infant &nbspunder 2</a>
+            <a class="dropdown-item" href="#">Lap Infant &nbspunder 2</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        <button type="button" class="btn btn-danger">Economy</button>
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop4" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+          <div class="dropdown-menu" id="dropdownTravelClass"aria-labelledby="btnGroupDrop4">
+            <a class="dropdown-item" href="#">Premium Economy</a>
+            <a class="dropdown-item" href="#">Business</a>
+            <a class="dropdown-item" href="#">First</a>
+            <a class="dropdown-item" href="#">Multiple</a>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </nav>
+  
+
+    <div class="container">
+        <div class="row">
+
+          <div class="col-sm">
+              <div class="form-group has-success">
+                  <input type="text" value="Origin" class="form-control is-valid" id="txtOrigin">
+                </div>      
+          </div>
+
+          <div class="col-sm">
+              <div class="form-group has-success">
+                  <input type="text" value="Destination" class="form-control is-valid" id="txtDestination">
+                </div>                
+          </div>
+
+          <div class="col-sm">
+              <div class="form-group has-success">
+                  <input type="date"  class="form-control is-valid" id="datepickerDepart">
+                </div>                
+          </div>
+
+          <div class="col-sm">
+              <div class="form-group has-success">
+                  <input type="date"  class="form-control is-valid" id="dateReturn">
+                </div>                
+          </div>
+             
+
+          <div class="col-sm">
+              <div class="form-group has-success">
+                  <button type="button" class="btn btn-default btn-sm" id="btnSearch">
+                      <span class="glyphicon glyphicon-search"></span> Search </button>   
+              </div>     
+          </div>
+    </div>
+  </div>
+      
+</div>  
+</form> 
+</body>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+  <script src="js/site.js"></script>
+
+</html>
