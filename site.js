@@ -1,9 +1,9 @@
 var numberAdults = 1
 let classOfService = 'ECONOMY'
 let typeOfTrip = 'ONEWAYTRIP'
-let departureDate = '2018-7-04'
-let origin = 'JFK'
-let destination = 'MIA'
+let departureDate = '2018-9-06'
+let origin = 'IAH'
+let destination = 'BOS'
 classOfService = 'ECONOMY'
 var flightDetails = {
     "ResponseVersion": "VERSION41",
@@ -31,7 +31,7 @@ var apiCall = {
     "method": "POST",
     "headers": {
         "Content-Type": "application/json",
-        "Authorization": "Basic ZnJhbmR1bHVjQGdtYWlsLmNvbTo4N0Y4NzREOQ==",
+        "Authorization": "Basic ZnJhbmR1bHVjQGdtYWlsLmNvbTpkcmVhbXRlYW0x",
         "Cache-Control": "no-cache",
         "Postman-Token": "38e78197-4179-4e24-8511-89c3934256d4"
     },
@@ -52,7 +52,7 @@ $.ajax(apiCall).done(function (response) {
         let flightSegment = outboundFlightsArray[index].FlightSegment[0]
 
         // Segment Reference Object
-        let segmentReference = segmentReferenceArray[0]
+        let segmentReference = segmentReferenceArray[index]
 
         let departureAirport = flightSegment.DepartureAirport.LocationCode
         let departureDateTime = flightSegment.DepartureDateTime
@@ -65,6 +65,7 @@ $.ajax(apiCall).done(function (response) {
         let flightNumber = flightSegment.FlightNumber
         let stopQty = flightSegment.StopQuantity
         let totalAdultFare = segmentReference.PTC_FareBreakdown.Adult.TotalAdultFare
+        console.log(totalAdultFare)
 
     })
 
