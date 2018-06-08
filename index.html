@@ -7,8 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css"> -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
     <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/lux/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -19,6 +17,7 @@
   <div class="fluid">
    <form>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
 
     <div id ="wrapper">
       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
@@ -69,36 +68,30 @@
 
           <div class="col-sm">
               <div class="form-group has-success">
-                  <input type="text" value="Origin" class="form-control is-valid" id="txtOrigin">
+                  <input type="text" class="form-control is-valid" id="txtOrigin" placeholder="Origin">
                 </div>      
           </div>
 
           <div class="col-sm">
               <div class="form-group has-success">
-                  <input type="text" value="Destination" class="form-control is-valid" id="txtDestination">
+                  <input type="text" value="Destination" class="form-control is-valid" id="txtDestination" placeholder="Destination">
                 </div>                
           </div>
 
           <div class="col-sm">
               <div class="form-group has-success">
-                  <input type="date"  class="form-control is-valid" id="datepickerDepart">
+                  <input type="date"  class="form-control is-valid" id="datepickerDepart" placeHolder="Departure Date">
                 </div>                
           </div>
-
-          <div class="col-sm">
-              <div class="form-group has-success">
-                  <input type="date"  class="form-control is-valid" id="dateReturn">
-                </div>                
-          </div>
-             
-
           <div class="col-sm">
               <div class="form-group has-success">
                   <button type="button" class="btn btn-default btn-sm" id="btnSearch">
                       <span class="glyphicon glyphicon-search"></span> Search </button>   
               </div>     
-          </div>
+          </div>     
     </div>
+    <br/>
+    <div id="weatherInfoDiv"> 
   </div>
       
 </div>  
@@ -110,6 +103,7 @@
   crossorigin="anonymous"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+  
   <script src="js/site.js"></script>
 
 </html>

@@ -1,117 +1,148 @@
 
 
-//const WEATHER_API_KEY = "b65c894b0f65976f2dd9c8f4a7842d37"
-const WEATHER_API_KEY = "ea44b4249b6547efabd58be82508bc5b"
-//const WEATHER_API_KEY = "AIzaSyAlyyxkszLfFl6EPdpk9GupxvHuVq3YJPA"
+const WEATHER_API_KEY = "ed864b94a3374d3b01efe92a63c6f6eb"
 
 
 let btnSearch = $('#btnSearch')
 let txtDestination = $('#txtDestination')
 let datepickerDepart =$('#datepickerDepart')
 let datepickerReturn =$('#datepickerReturn')
-var dateAndIconsArray = []
+let weatherInfoDiv =$('#weatherInfoDiv')
+let weatherData  = []
+let dateSelected = ""
+
+
 
 $(document).ready(function(){
+    
+            $('input[type="date"]').change(function(){
+                    
+            dateSelected = new Date(this.value)            
+            let destination = txtDestination.val()
+           
+            accessCityDetails(destination,function(data){
+                    console.log(data)
+                    console.log("**********************")
+                    console.log(weatherData)
 
-    datepickerDepart.click(function(){
-        console.log("datepicker")
-        let destination = txtDestination.val()
-        accessCityDetails(destination)
-       console.log(dateAndIconsArray)
+    
+                console.log(weatherData[1])
+                console.log("**********************")
+                let weatherSummary =weatherData[3].substring(0,weatherData[3].length-1) 
 
-        // let dt =$('#datetimepicker').data("DateTimePicker").date()
-        // let dateString= dt.toString
-         
-        // console.log(dateString)
+               
+                let imgpath = "images/wi-day-sunny.png"
+    
+                if(weatherData[1] == "clear-day")
+                {
+                    imgpath = "images/sun.svg"
+                }
+                else if (weatherData[1] == "clear-day"){
+                    imgpath = "images/rain.svg"
+                }
+                else if (weatherData[1] == "partly-cloudy-day"){
 
+                    imgpath = "images/partly-cloudy.svg"
+                }
+                else if (weatherData[1] == "cloudy"){
+
+                    imgpath = "images/cloud.svg"
+                }
+                else if (weatherData[1] == "snow"){
+
+                    imgpath = "images/snow.svg"
+                }
+                else if (weatherData[1] == "sleet"){
+
+                    imgpath = "images/day-sleet.svg"
+                }
+                else if (weatherData[1] == "wind"){
+
+                    imgpath = "images/windy.svg"
+                }
+                else if (weatherData[1] == "fog"){
+
+                    imgpath = "images/foggy.svg"
+                }
+                else if (weatherData[1] == "thunderstorm"){
+
+                    imgpath = "images/storm.svg"
+                }
+                else 
+                {
+                    imgpath = "images/partly-cloudy.svg";
+                }               
+                                        
+                                        
+                  let weatherInfo = `<div id="weatherForecastDiv" class="jumbotron">
+                                        <h2 align='center'>weather forecast for your trip</h2>
+                                        <div class="row">                                 
+                                            <div class='col-sm'>                                        
+                                                <img src='${imgpath}' height='200px' width='200px'>
+                                            </div>
+                                            <div class='col-lg'>
+                                                <br/>
+                                                <h4>${dateSelected.toUTCString()}</h4>
+                                                <br/>
+                                                <h4><img src="images/temp.png" height='20px' width='20px'></img>Temperature:${weatherData[2]}<small>&nbspin celcius</small></h4>
+                                                <br/>
+                                                <p><h5>${weatherSummary} when you land in <b>${destination}.</b></h5></p>
+                                            </div>
+                                        </div>
+                                        </div>    
+                                    </div>`
+                weatherInfoDiv.html(weatherInfo)   
+              
+            })
     })
 
 })
 
-
-
-
 // variable cityString = city of destination
-function accessCityDetails(cityString){
-fetch("https://maps.googleapis.com/maps/api/geocode/json?address="+cityString)
+function accessCityDetails(cityString,getCityDetails){
+   
+ fetch("https://maps.googleapis.com/maps/api/geocode/json?address="+cityString)
 .then(function(response){
     return response.json()
 }).then(function(json){
-
-    //console.log("accessCityDetails")
-    //console.log(json)
-    var datePickerArray =  getCityLocation(json)
-    dateAndIconsArray.push(datePickerArray)
-    console.log(dateAndIconsArray)
-    
+    getCityLocation(json,getCityDetails)
 })
+    }
 
-}
-
-
-function getCityLocation(cityObj){
-    
+function getCityLocation(cityObj,getCityDetails){
     let latitude = cityObj.results[0].geometry.location.lat
     let longitude = cityObj.results[0].geometry.location.lng
-    return getWeatherData(latitude,longitude)
+    getWeatherData(latitude,longitude,getCityDetails)
     
  }
 
-
-
-function getWeatherData(lat,long) {
-
-    let date = new Date()
-    let today = date.getTime()
-    let weatherIcons=[]
-
-
-    for (let index=0;index <= 30;index++){
-        let nextDay = Math.round(today/1000)+(index*86400) 
-        console.log(nextDay)
-   
-    
+function  getWeatherData(lat,long,getCityDetails) {
+        let dateSelectedMS= dateSelected.getTime()
+        let dateSelectedTime= Math.round(dateSelectedMS/1000)
         let base_url= "https://api.darksky.net/forecast/"
-        let searchQuery = base_url + WEATHER_API_KEY + "/"+ lat +","+long + ","+ nextDay
+        let searchQuery = base_url + WEATHER_API_KEY + "/"+ lat +","+long+ ","+ dateSelectedTime
+       
+    fetch(searchQuery)
+    .then(function(response){
+    return  response.json()
+    }).then(function(json){
 
-        fetch(searchQuery)
-            .then(function(response){
-            return response.json()
-            }).then(function(json){
-        
-            weatherIcons.push({ day:nextDay,weather:json.daily.data[0].icon })
-
+        weatherData = []
+        weatherData.push(dateSelectedTime)
+        weatherData.push(json.daily.data[0].icon)
+        weatherData.push(json.daily.data[0].temperatureHigh)
+        weatherData.push(json.daily.data[0].summary)
+       
+        getCityDetails(weatherData)        
+       
     }).catch(function(ex) {
         console.log(ex)
-      })
-
-     }
-    return displayWeatherIcons(weatherIcons)
+    })
 }
+ 
+    
+    
 
 
 
-function displayWeatherIcons(weatherIcons){
 
-    return weatherIcons;
-        // weatherIcons.forEach(function(icon){       
-        //    let date = (icon).day
-        //    console.log(date)
-           
-            
-        //    for(date in icon){
-        //        //console.log(icon[day])
-        //        if(icon[date]=="rain") {
-        //            console.log("rain")
-        //        }
-        //    }
-        //    })
-               
-    }
-
-
-// let destination = "Miami"
-// console.log('starting script')
-// let wd = accessCityDetails(origin)
-// console.log("===========weather data============")
-// console.log(wd)
