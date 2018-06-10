@@ -1,0 +1,54 @@
+a.nav-link.dropdown-toggle{
+    font-size: 9px;
+    margin:auto;
+}
+a.navbar-brand{
+    text-align: center;
+    align-content: center;
+    margin:auto;
+}
+
+.selectBtns {
+    margin: 0 auto;
+    width: 100px;
+}
+.jumbotron{
+    background: #1488CC;
+    /* fallback for old browsers */
+
+    background: -webkit-linear-gradient(to right, #2B32B2, #1488CC);
+    /* Chrome 10-25, Safari 5.1-6 */
+
+    background: linear-gradient(to right, #2B32B2, #1488CC);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    text-align: center;
+
+}
+#headertext{
+    text-align:center;
+    color:white;
+    font-size:50px;
+}
+#datepickerDepart{
+    padding: 10px;
+}
+#mainMenu{
+    background-color:#F7F7F9
+
+}
+.form-control{
+    background-color: white;
+}
+[type="button"]{
+    color:white;
+    background: #fc4a1a;
+    /* fallback for old browsers */
+
+    background: -webkit-linear-gradient(to right, #f7b733, #fc4a1a);
+    /* Chrome 10-25, Safari 5.1-6 */
+
+    background: linear-gradient(to right, #f7b733, #fc4a1a);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding:10px;
+    font-size: 20px
+}
