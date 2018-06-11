@@ -21,9 +21,6 @@
     
 }
 
-/* #weatherInfoDiv{
-    height:100px;
-} */
 
 .btn, #btnSearch,.dropdown-menu ,.dropdown-item,.form-control,#txtOrigin,#txtDestination,#txtDatePicker{
     font-size: 12px;
@@ -35,5 +32,23 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     opacity: 0.5
 }
 #weatherInfoDiv {
-    box-shadow: 10px 10px grey
+    
+    width:80%;
+    height:auto;
+    margin:120px;
+    
+}   
+   
+   
+#weatherForecastDiv{
+    color:white;
+   
+}  
+#weatherTitle {
+    font-size: 35px;
+    
+}
+#trip_essentials{
+    margin-left:300px;
+   
 }
