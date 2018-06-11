@@ -80,7 +80,7 @@
   </div>
 
   <!-- spinner begins-->
-  <svg id="spinner" align-items="center" width="400px" height="auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
+  <svg id="spinner" align-items="center" width="400px" height="600px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
     preserveAspectRatio="xMidYMid" class="lds-ripple" style="background: none;">
     <circle cx="50" cy="50" r="32.872" fill="none" ng-attr-stroke="{{config.c1}}" ng-attr-stroke-width="{{config.width}}" stroke="#337ab7"
       stroke-width="2">
@@ -109,8 +109,9 @@
   <!--flights end-->
 
   <!-- modal begins -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade bd-example-modal-lg" id="flightModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Detailed Flight Info</h5>
@@ -118,7 +119,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div id="flightModalBody" class="modal-body">
           ...
         </div>
         <div class="modal-footer">
@@ -129,6 +130,7 @@
     </div>
   </div>
   <!--modal ends-->
+
 
 
 

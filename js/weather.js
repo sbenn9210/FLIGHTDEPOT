@@ -75,9 +75,7 @@ $(document).ready(function () {
 // variable cityString = city of destination
 function accessCityDetails(cityString, getCityDetails) {
 
-    fetch("https://maps.googleapis.com/maps/api/geocode/json?address=" + cityString, {
-            mode: 'no-cors'
-        })
+    fetch("https://maps.googleapis.com/maps/api/geocode/json?address=" + cityString)
         .then(function (response) {
             return response.json()
         }).then(function (json) {
@@ -100,6 +98,7 @@ function getWeatherData(lat, long, getCityDetails) {
 
     fetch(searchQuery)
         .then(function (response) {
+            console.log(response)
             return response.json()
         }).then(function (json) {
 

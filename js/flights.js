@@ -9,7 +9,7 @@ $("#spinner").hide()
         let typeOfTrip = 'ONEWAYTRIP'
         let departureDate = $('#datepickerDepart').val()
         let origin = $('#fromInput').val()
-        let destination = $('#toInput').val()
+        let destination = 'MIA'
     
 
       $("#spinner").hide().show()
@@ -51,8 +51,7 @@ function setFlightDetails(numberAdults, classOfService, typeOfTrip, departureDat
     apiCalls(flightDetails)
 
    
-    
-    
+
 }
 
 // apiCalls()
@@ -79,6 +78,20 @@ console.log(apiCall)
 findFlights(apiCall)
 }
 
+// checkout function
+
+function checkout(id){
+   
+        console.log('HOLA!')
+       
+        var table_row = document.getElementById(id)
+        var finalOutput = table_row.outerHTML
+        console.log(finalOutput)
+        $('#flightModalBody').html(finalOutput)  
+        storeFlightSelected(finalOutput)
+
+    
+}
 
 // AJAX API Call
 
@@ -147,7 +160,7 @@ $.ajax(callDetails).done(function (response) {
         let totalAdultFare = parseFloat(Math.round(segmentReference.PTC_FareBreakdown.Adult.TotalAdultFare * 100) / 100).toFixed(2)
         console.log(operatedByAirline)
         var entry =  `
-        <tr class="table_row" data-id="{{id}}">
+        <tr id="row_${index}" class="table_row selectedFlight" data-id="{{id}}">
           <th id="airline"
           scope="col"> <img class="flight-img"
           src="http://www.gstatic.com/flights/airline_logos/70px/${marketingAirline}.png"></th>
@@ -156,9 +169,11 @@ $.ajax(callDetails).done(function (response) {
           <th id="duration" scope="col">${flightDuration + 'hrs'} <br> ${departureAirport} - ${arrivalAirport} </th>
           <th scope="col">Price <br></th>
           <th>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">$${totalAdultFare}</button>
+            <button type="button" onclick="checkout('row_${index}')" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">$${totalAdultFare}</button>
           </th>
         </tr>
+
+        
      
      
         `
@@ -167,4 +182,22 @@ $.ajax(callDetails).done(function (response) {
 
     })});
 
+}
+
+
+// checkout page
+
+
+function storeFlightSelected(finalOutput) {
+   sessionStorage.setItem('flightCheckOut', finalOutput)
+   window.location = "checkout.html"
+   return false;
+}
+
+function getFlightSelected(finalOutput){
+    let flightSelected = sessionStorage.getItem('flightCheckOut');
+    $('#injectHere').append(flightSelected)
+
+    
+    
 }

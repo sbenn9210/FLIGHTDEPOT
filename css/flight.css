@@ -44,3 +44,10 @@ h3 {
   background-color: inherit;
   border: none;
 }
+.modal-content {
+  padding:300px;
+  margin:300px;
+}
+.jumbotron{
+  background:white;
+}
